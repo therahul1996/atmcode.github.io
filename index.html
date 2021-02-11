@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>atm</title>
+	<script type="text/javascript">
+		var wallet = 10000.0;
+
+		function get_balance() {
+			alert('Your Current Balance is:'+wallet);
+			atm();
+		}
+
+		function make_deposit() {
+			var deposit = parseFloat(prompt('How much would you like do deposit?'));
+			if (isNaN(deposit) || deposit === '') {
+				alert('Error: Please Enter a number!');
+				make_deposit();
+			}else{
+				wallet += deposit;
+				get_balance();
+			}
+		}
+
+		function make_withrawal() {
+			var withrawal = parseFloat(prompt('How much would you like to withrawal?'));
+			if (isNaN(withrawal) || withrawal === '') {
+				alert('Error: Please Enter a number!');
+				make_withrawal();
+			}else{
+				wallet -= withrawal;
+				get_balance();
+			}
+		}
+
+		function exit() {
+			var confirm_leave = confirm('You have select exit.');
+			if (confirm_leave) {
+				window.close();
+			}else{
+				atm();
+			}
+		}
+
+		function error() {
+			alert('Error: accepted number are 1 through 4.');
+			atm();
+		}
+
+		function atm() {
+			var choice = parseInt(prompt('Select Your Choice 1. Balance 2. Deposit 3. Withrawal 4. Exit'));
+			if (choice == 1) {
+				get_balance();
+			}else if (choice == 2) {
+				make_deposit();
+			}else if (choice == 3) {
+				make_withrawal();
+			}else if (choice == 4) {
+				exit();
+			}else{
+				error();
+			}
+		}
+		atm();
+	</script>
+</head>
+<body>
+
+</body>
+</html>
